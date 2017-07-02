@@ -1,0 +1,103 @@
+
+
+
+ext {
+
+  retrieveVersionName = {
+    return project.hasProperty('version_name') ? version_name : default_version_name
+  }
+  retrieveVersionCode = {
+    return project.hasProperty('version_code') ? version_code.toInteger() : default_version_code
+  }
+
+  compile_sdk_version = 26
+  build_tool_version = "26.0.0"
+  application_id = "com.spranga.winesales"
+  min_sdk_version = 23
+  target_sdk_version = 26
+
+  //APP VERSION
+  default_version_name = "0.1-dev"
+  default_version_code = 1
+
+  //DEPENDENCIES
+  android_support_version = "25.4.0"
+  android_constraint_layout = "1.0.2"
+  android_multidex_version = "1.0.1"
+  dagger_version = '2.11'
+  rxjava_version = '2.1.0'
+  rxandroid_version = '2.0.1'
+  rxkotlin_version = '2.0.3'
+  rxlifecycle_version = "2.1.0"
+  retrofit_version = '2.3.0'
+  logan_square_version = '1.3.7'
+  logansquare_converter_version = '1.4.1'
+  stetho_version = '1.5.0'
+  streamapi_version = '1.1.7'
+  leakcanary_version = '1.5.1'
+  okhttp_version = '3.8.0'
+  calligraphy_version = "2.2.0"
+  jodatime_version = "2.9.4.1"
+  butterknife_version = '8.5.1'
+  AA_version = "4.3.1"
+  snacky_version = "1.0.2"
+  circle_image_view_version = "2.1.0"
+  ucrop_version = "2.2.0"
+  material_rating_version = "1.0.2"
+  base_recycler_view_version = "2.9.2"
+  fresco_version = "1.3.0"
+  circle_progress_version = "1.2.1"
+  cool_loader_version = "2.1.3"
+  circle_indicator_version = "1.2.2@aar"
+
+  //TEST DEPENDENCIES
+  espresso_version = "2.2.2"
+  junit_version = "4.12"
+  mockito_version = "2.7.15"
+  assertj_version = "1.1.1"
+  okhttp_idling_version = "1.0.0"
+  jsr305_version = "3.0.1"
+  robolectric_version = "3.3.2"
+
+  //BUILD VARIABLES
+}
+
+android {
+
+  compileSdkVersion compile_sdk_version
+  buildToolsVersion build_tool_version
+  defaultConfig {
+    minSdkVersion min_sdk_version
+    targetSdkVersion target_sdk_version
+    versionCode retrieveVersionCode()
+    versionName retrieveVersionName()
+  }
+
+  signingConfigs {
+    develop {
+      keyAlias 'winesales'
+      keyPassword 'password'
+      storeFile file('../keystores/keystore.jks')
+      storePassword 'password'
+    }
+  }
+
+  buildTypes {
+    release {
+      shrinkResources false
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'),
+          'proguard-rules.pro'
+      resValue "string", "app_name", "Wine Sales"
+      signingConfig signingConfigs.develop
+    }
+    debug {
+      shrinkResources false
+      minifyEnabled true
+      proguardFiles getDefaultProguardFile('proguard-android.txt'),
+          'proguard-rules.pro'
+      resValue "string", "app_name", "* Wine Sales"
+      signingConfig signingConfigs.develop
+    }
+  }
+}

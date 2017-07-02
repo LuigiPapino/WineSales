@@ -1,0 +1,10 @@
+apply plugin: 'com.android.instantapp'
+apply from: '../config.gradle'
+
+android {
+
+}
+
+dependencies {
+    implementation project(':feature_home')
+}

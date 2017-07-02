@@ -1,0 +1,58 @@
+apply plugin: 'com.android.feature'
+apply from: '../config.gradle'
+
+android {
+    baseFeature true
+}
+
+dependencies {
+    application project(':app')
+    feature project(':feature_home')
+
+    //KOTLIN
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    //SUPPORT
+    api "com.android.support:appcompat-v7:$android_support_version"
+    api "com.android.support:support-v4:$android_support_version"
+    implementation"com.android.support:recyclerview-v7:$android_support_version"
+    api "com.android.support:design:$android_support_version"
+    implementation"com.android.support:cardview-v7:$android_support_version"
+    api "com.android.support.constraint:constraint-layout:$android_constraint_layout"
+
+    //DAGGER
+    implementation"com.google.dagger:dagger:$dagger_version"
+    implementation"com.google.dagger:dagger-android-support:$dagger_version"
+    annotationProcessor "com.google.dagger:dagger-compiler:$dagger_version"
+
+
+    //RXJAVA
+    implementation"io.reactivex.rxjava2:rxjava:$rxjava_version"
+    implementation"io.reactivex.rxjava2:rxandroid:$rxandroid_version"
+    implementation"io.reactivex.rxjava2:rxkotlin:$rxkotlin_version"
+
+    //RxLifeCycle Trello
+    implementation"com.trello.rxlifecycle2:rxlifecycle:$rxlifecycle_version"
+    implementation"com.trello.rxlifecycle2:rxlifecycle-android:$rxlifecycle_version"
+    implementation"com.trello.rxlifecycle2:rxlifecycle-components:$rxlifecycle_version"
+
+    //Fresco
+    implementation"com.facebook.fresco:fresco:$fresco_version"
+    implementation"com.facebook.fresco:imagepipeline-okhttp3:$fresco_version"
+
+    //Cool Loader
+    implementation"com.wang.avi:library:$cool_loader_version"
+
+
+    //--------DEV TOOLS-------
+    implementation"com.facebook.stetho:stetho:$stetho_version"
+    implementation"com.facebook.stetho:stetho-okhttp3:$stetho_version"
+    debugImplementation"com.squareup.leakcanary:leakcanary-android:$leakcanary_version"
+    releaseImplementation"com.squareup.leakcanary:leakcanary-android-no-op:$leakcanary_version"
+
+
+
+
+    
+    
+}

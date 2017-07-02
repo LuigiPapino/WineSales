@@ -1,0 +1,22 @@
+apply plugin: 'com.android.application'
+apply from: '../config.gradle'
+
+android {
+
+    defaultConfig {
+        applicationId application_id
+
+    }
+    buildTypes {
+        debug{
+            applicationIdSuffix ".debug"
+        }
+    }
+
+
+}
+
+dependencies {
+    implementation project( ':feature_home')
+    implementation project(':base')
+}
